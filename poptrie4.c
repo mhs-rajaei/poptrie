@@ -53,7 +53,8 @@ _rib_lookup(struct radix_node *, u32, int, struct radix_node *);
  * Add a route
  */
 int
-poptrie_route_add(struct poptrie *poptrie, u32 prefix, int len, void *nexthop)
+//poptrie_route_add(struct poptrie *poptrie, u32 prefix, int len, void *nexthop)
+poptrie_route_add(struct poptrie *poptrie, u32 prefix, int len, u32 nexthop)
 {
     int ret;
     int n;
@@ -77,7 +78,7 @@ poptrie_route_add(struct poptrie *poptrie, u32 prefix, int len, void *nexthop)
  */
 int
 poptrie_route_change(struct poptrie *poptrie, u32 prefix, int len,
-                     void *nexthop)
+                     u32 nexthop)
 {
     int n;
 
@@ -92,7 +93,7 @@ poptrie_route_change(struct poptrie *poptrie, u32 prefix, int len,
  */
 int
 poptrie_route_update(struct poptrie *poptrie, u32 prefix, int len,
-                     void *nexthop)
+                     u32 nexthop)
 {
     int ret;
     int n;
@@ -122,7 +123,7 @@ poptrie_route_del(struct poptrie *poptrie, u32 prefix, int len)
 /*
  * Lookup a route by the specified address
  */
-void *
+u32
 poptrie_lookup(struct poptrie *poptrie, u32 addr)
 {
     int inode;
@@ -170,7 +171,7 @@ poptrie_lookup(struct poptrie *poptrie, u32 addr)
 /*
  * Lookup the next hop from the radix tree (RIB table)
  */
-void *
+u32
 poptrie_rib_lookup(struct poptrie *poptrie, u32 addr)
 {
     poptrie_fib_index_t idx;

@@ -81,7 +81,7 @@ test_lookup(void)
     struct poptrie *poptrie;
     int ret;
     __uint128_t addr;
-    void *nexthop;
+    u32 nexthop;
 
     /* Initialize */
     poptrie = poptrie_init(NULL, 19, 22);
@@ -97,7 +97,7 @@ test_lookup(void)
 
     /* Route add */
     addr = IPV6ADDR(0x2001, 0xdb8, 0x1, 0x0, 0, 0, 0, 0);
-    nexthop = (void *)1234;
+    nexthop = 1234;
     ret = poptrie6_route_add(poptrie, addr, 48, nexthop);
     if ( ret < 0 ) {
         /* Failed to add */
@@ -111,7 +111,7 @@ test_lookup(void)
 
     /* Route update */
     addr = IPV6ADDR(0x2001, 0xdb8, 0x1, 0x0, 0, 0, 0, 0);
-    nexthop = (void *)5678;
+    nexthop = 5678;
     ret = poptrie6_route_update(poptrie, addr, 48, nexthop);
     if ( ret < 0 ) {
         /* Failed to update */
@@ -196,7 +196,7 @@ test_lookup_linx(void)
         addr2 = in6_addr_to_uint128(&v6addr);
 
         /* Add an entry (use the least significant 64 bits for testing) */
-        ret = poptrie6_route_add(poptrie, addr1, prefixlen, (void *)(u64)addr2);
+        ret = poptrie6_route_add(poptrie, addr1, prefixlen, addr2);
         if ( ret < 0 ) {
             return -1;
         }
@@ -230,7 +230,7 @@ test_lookup_linx(void)
  * Main routine for the basic test
  */
 int
-main2(int argc, const char *const argv[])
+main(int argc, const char *const argv[])
 {
     int ret;
 

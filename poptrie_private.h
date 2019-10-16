@@ -1144,7 +1144,8 @@ _update_clean_root(struct poptrie *poptrie, int nroot, int oroot)
  * Insert an entry to the FIB mapping table
  */
 static int
-poptrie_fib_ref(struct poptrie *poptrie, void *nexthop)
+//poptrie_fib_ref(struct poptrie *poptrie, void *nexthop)
+poptrie_fib_ref(struct poptrie *poptrie, u32 nexthop)
 {
     int i;
     int n;
@@ -1184,7 +1185,8 @@ poptrie_fib_ref(struct poptrie *poptrie, void *nexthop)
  * Dereference an entry from the FIB mapping table
  */
 static void
-poptrie_fib_deref(struct poptrie *poptrie, void *nexthop)
+//poptrie_fib_deref(struct poptrie *poptrie, void *nexthop)
+poptrie_fib_deref(struct poptrie *poptrie, u32 nexthop)
 {
     int i;
 

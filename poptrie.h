@@ -69,7 +69,8 @@ struct radix_node {
  * FIB mapping table
  */
 struct poptrie_fib_entry {
-    void *entry;
+    //void *entry;
+    u32 entry;
     int refs;
 };
 struct poptrie_fib {
@@ -115,20 +116,35 @@ extern "C" {
     /* in poptrie.c */
     struct poptrie * poptrie_init(struct poptrie *, int, int);
     void poptrie_release(struct poptrie *);
-    int poptrie_route_add(struct poptrie *, u32, int, void *);
-    int poptrie_route_change(struct poptrie *, u32, int, void *);
-    int poptrie_route_update(struct poptrie *, u32, int, void *);
+
+int poptrie_route_add(struct poptrie *, u32, int, u32);
+
+//int poptrie_route_add(struct poptrie *, u32, int, void *);
+//int poptrie_route_change(struct poptrie *, u32, int, void *);
+int poptrie_route_change(struct poptrie *, u32, int, u32);
+
+int poptrie_route_update(struct poptrie *, u32, int, u32);
+
+//int poptrie_route_update(struct poptrie *, u32, int, void *);
     int poptrie_route_del(struct poptrie *, u32, int);
-    void * poptrie_lookup(struct poptrie *, u32);
-    void * poptrie_rib_lookup(struct poptrie *, u32);
+
+//void * poptrie_lookup(struct poptrie *, u32);
+u32 poptrie_lookup(struct poptrie *, u32);
+
+//void * poptrie_rib_lookup(struct poptrie *, u32);
+u32 poptrie_rib_lookup(struct poptrie *, u32);
 
     /* in poptrie6.c */
-    int poptrie6_route_add(struct poptrie *, __uint128_t, int, void *);
-    int poptrie6_route_change(struct poptrie *, __uint128_t, int, void *);
-    int poptrie6_route_update(struct poptrie *, __uint128_t, int, void *);
+    int poptrie6_route_add(struct poptrie *, __uint128_t, int, u32);
+
+int poptrie6_route_change(struct poptrie *, __uint128_t, int, u32);
+
+int poptrie6_route_update(struct poptrie *, __uint128_t, int, u32);
     int poptrie6_route_del(struct poptrie *, __uint128_t, int);
-    void * poptrie6_lookup(struct poptrie *, __uint128_t);
-    void * poptrie6_rib_lookup(struct poptrie *, __uint128_t);
+
+__uint128_t poptrie6_lookup(struct poptrie *, __uint128_t);
+
+__uint128_t poptrie6_rib_lookup(struct poptrie *, __uint128_t);
 
 #ifdef __cplusplus
 }
