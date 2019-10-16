@@ -3,8 +3,8 @@
 # All rights reserved.
 #
 
-#AC_PREREQ(2.59)
-#AC_INIT([poptrie], [0.2.0], [asai@jar.jp])
+AC_PREREQ(2.59)
+AC_INIT([poptrie], [0.2.0], [asai@jar.jp])
 AC_CONFIG_SRCDIR([poptrie.c])
 AC_CONFIG_HEADER([config.h])
 
